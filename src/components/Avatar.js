@@ -2,10 +2,10 @@ import React from 'react';
 import ava from '../assets/avatar.jpg'
 import { Border } from './Avatar-element';
 
-const Avatar = () => {
+const Avatar = ({image,width}) => {
   return (
-       <Border>
-           <img src={ava}/>
+       <Border width={width}>
+           <img src={image}/>
        </Border>
   )
 };

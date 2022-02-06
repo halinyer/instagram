@@ -1,11 +1,14 @@
 import React from 'react';
-import { Nav, NavInput, NavLink, NavLogo, Ul, Container } from './Navbard-element';
+import { Nav, NavInput, NavLink, NavLogo,NavbardNav, Container, NavItem } from './Navbard-element';
 import { BiHomeAlt, BiAddToQueue, BiHeart, BiCompass } from "react-icons/bi";
 import { IconContext } from 'react-icons/lib';
-import Menu from './Menu';
 import Seeker from './Seeker';
+import Avatar from './Avatar';
+import { useSelector } from 'react-redux';
 
 const Navbard = () => {
+    const {image,name} = useSelector(state => state.profile)
+
   return (
       <Nav>
           <Container>
@@ -14,44 +17,43 @@ const Navbard = () => {
               </NavLogo>
 
               <NavInput>
-                  <Seeker/>
+                  <Seeker />
               </NavInput>
 
-              <Ul>
+              <NavbardNav>
                   <IconContext.Provider value={{ size: "1.7rem" }}>
-
-                      <li>
+                      <NavItem>
                           <NavLink to="/">
                               <BiHomeAlt />
                           </NavLink>
-                      </li>
-                      <li>
+                      </NavItem>
+
+                      <NavItem>
                           <NavLink to="/">
                               <BiAddToQueue />
                           </NavLink>
-                      </li>
+                      </NavItem>
 
-                      <li>
-                          <NavLink to="/">
+                      <NavItem>
+                          <NavLink to="/explore">
                               <BiCompass />
                           </NavLink>
-                      </li>
+                      </NavItem>
 
-                      <li>
+                      <NavItem>
                           <NavLink to="/">
                               <BiHeart />
                           </NavLink>
-                      </li>
+                      </NavItem>
 
-
+                      <NavItem>
+                          <NavLink to={`/${name}`}>
+                          <Avatar image={image}/>
+                          </NavLink>
+                      </NavItem>
                   </IconContext.Provider>
 
-
-                  <li>
-                      <Menu />
-                  </li>
-
-              </Ul>
+              </NavbardNav>
           </Container>
       </Nav>
   )
