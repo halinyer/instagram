@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
       dispatch(getPostAsync())
-      dispatch(getProfileAction())
+      
   }, []);
 
   return (

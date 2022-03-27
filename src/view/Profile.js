@@ -14,8 +14,9 @@ const Profile = () => {
   let {name,image} = useSelector(state => state.profile)
 
   useEffect(() => {
-    dispatch(getProfileAction())
-  }, []);
+    dispatch(getProfileAction(profile))
+  }, [profile]);
+
   return (
     <Main>
       <ProfileHeader>
@@ -55,33 +56,51 @@ const Profile = () => {
 export default Profile;
 
 
-// const Main = styled.main`
-// box-sizing:border-box;
-//  width: 100%;
-//  max-width: 950px;
-//  margin: auto ;
-//  padding: 0px 10px;
- 
- 
-// `
-
 
 const ProfileHeader = styled.section`
- padding: 26px 0  px;
+ padding: 18px 0px;
  box-sizing:border-box;
  width: 100%;
- max-width: 830px;
+ max-width: 800px;
  margin: auto;
  display: grid;
- grid-template-columns: 35% 1fr;
+ grid-template-columns: 28% 45%;
+ gap: 50px;
 
- .info-1{
+
+
+
+
+`
+const ProfileImg = styled.div`
+ margin: auto;
+
+`
+
+const ProfileInfo = styled.div`
+display: flex;
+flex-direction: column;
+
+.info-1{
    display: flex;
+   align-items: center;
+ 
    
 
    p{
      font-size: 25px;
      cursor: pointer;
+   }
+
+   button{
+     width: 90px;
+     height: 30px;
+     background: white;
+     border: 1.6px solid rgba(var(--b6a,219,219,219),1);
+     border-radius: 4px;
+     cursor:  pointer;
+     font-weight: bold;
+     margin-left: 20px;
    }
  }
  
@@ -89,7 +108,10 @@ const ProfileHeader = styled.section`
    display: flex;
     list-style: none;
     padding: 0;
-
+    justify-content: space-between;
+    span{
+      font-weight:bold;
+    }
     li{
       padding: 0;
     }
@@ -99,17 +121,10 @@ const ProfileHeader = styled.section`
 
 
 `
-const ProfileImg = styled.div`
- margin: auto;
-`
-
-const ProfileInfo = styled.div`
-
-`
 
 
 const ProfileBody = styled.div`
- border-top: 1px solid black;
+ border-top: 1px solid rgba(var(--b6a,219,219,219),1);
  box-sizing:border-box;
 `
 
